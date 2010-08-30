@@ -208,7 +208,6 @@ module ActionView
             res = form_tag_without_haml(url_for_options, options, *parameters_for_url, &proc) + "\n"
             if block_given?
               concat "\n"
-              return Haml::Helpers::ErrorReturn.new("form_tag")
             end
             res
           else
@@ -234,7 +233,6 @@ module ActionView
           end
           form_for_without_haml(object_name, *args, &proc)
           concat "\n" if wrap_block
-          Haml::Helpers::ErrorReturn.new("form_for") if is_haml?
         end
         alias_method :form_for_without_haml, :form_for
         alias_method :form_for, :form_for_with_haml
